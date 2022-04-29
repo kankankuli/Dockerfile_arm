@@ -2,7 +2,9 @@ sudo -i
 apt update && apt upgrade -y
 apt install docker
 apt install docker-compose
-
+git clone https://github.com/kankankuli/build-odoo-image_arm.git
+edit dockerfile
+docker build -t odoo13:20220421 .
 nano docker-compose.yml
 
 ###
@@ -19,7 +21,7 @@ services:
         - ./postgresql:/var/lib/postgresql/data
 
   odoo13:
-    image: 13.0.20220423/odoo13:20220423 # edit
+    image: odoo13:20220421 # edit
     depends_on:
       - db
     ports:
@@ -33,10 +35,10 @@ services:
       - ./etc:/etc/odoo
     restart: always             # run as a service 
 ###
-git clone https://github.com/kankankuli/docker13arm.git
-mv docker13arm Dockerfile
-edit Dockerfile
-docker build -t 13.0.20220423/odoo13:20220423 . # edit
-cd\
-docker-compose up -d
-edit odoo.conf and addons
+
+docker-compose up 
+git clone https://github.com/kankankuli/addons.git
+wget https://www.soladrive.com/downloads/enterprise-13.0.tar.gz
+tar -zxvf enterprise-13.0.tar.gz
+mv 13.0 addons-enterprise
+docker-compose up 
