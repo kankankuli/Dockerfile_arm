@@ -36,6 +36,18 @@ services:
     restart: always             # run as a service 
 ###
 
+###
+
+nano etc/odoo.conf
+###
+[options]
+addons_path = /mnt/enterprise-addons,/mnt/extra-addons
+data_dir = /var/lib/odoo
+admin_passwd = Lsf7000+
+; db_name = bagusV2
+
+###
+
 docker-compose up 
 git clone https://github.com/kankankuli/addons.git
 wget https://www.soladrive.com/downloads/enterprise-13.0.tar.gz
