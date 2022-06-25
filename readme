@@ -3,6 +3,7 @@ apt update && apt upgrade -y
 apt install docker
 apt install docker-compose
 git clone https://github.com/kankankuli/build-odoo-image_arm.git
+sudo chmod -R 777 build-odoo-image_arm
 edit dockerfile
 docker build -t odoo13:20220625 .
 nano docker-compose.yml
@@ -21,7 +22,7 @@ services:
         - ./postgresql:/var/lib/postgresql/data
 
   odoo13:
-    image: odoo13:20220421 # edit
+    image: odoo13:20220625
     depends_on:
       - db
     ports:
