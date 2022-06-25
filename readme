@@ -4,7 +4,7 @@ apt install docker
 apt install docker-compose
 git clone https://github.com/kankankuli/build-odoo-image_arm.git
 edit dockerfile
-docker build -t odoo13:20220421 .
+docker build -t odoo13:20220625 .
 nano docker-compose.yml
 
 ###
